@@ -16,6 +16,7 @@ namespace Data.Persistence
         }
 
         public DbSet<PersonEntity> Persons { get; set; }
+        public DbSet<VisitEntity> Visits{ get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
