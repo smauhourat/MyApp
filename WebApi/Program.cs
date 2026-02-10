@@ -27,6 +27,7 @@ var app = builder.Build();
 app.UseHttpsRedirection();
 
 app.MapPersonsEndPoints();
+app.MapVisitsEndPoints();
 
 app.Run();
 

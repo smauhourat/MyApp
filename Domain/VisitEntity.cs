@@ -16,6 +16,8 @@ namespace Domain
         public bool Active => ExitTime == null;
         public TimeSpan? Duration => ExitTime.HasValue ? ExitTime.Value - EntryTime : null;
 
+        private VisitEntity() { }
+
         public VisitEntity(Guid personId, DateTime? timeEntry=null)
         {
             ArgumentNullException.ThrowIfNull(personId, nameof(personId));

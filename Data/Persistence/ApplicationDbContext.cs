@@ -36,6 +36,25 @@ namespace Data.Persistence
                 entity.Property<DateTime>("CreatedAt").IsRequired().HasDefaultValueSql("GETUTCDATE()");
                 entity.Property<DateTime>("UpdatedAt").IsRequired().HasDefaultValueSql("GETUTCDATE()");
             });
+
+            modelBuilder.Entity<VisitEntity>(entity =>
+            {
+                entity.ToTable("Visits");
+                entity.HasKey(e => e.Id);
+                entity.Property(e => e.Id).IsRequired().ValueGeneratedOnAdd();
+                entity.Property(e => e.PersonId).IsRequired();
+                entity.Property(e => e.EntryTime).IsRequired();
+                entity.Property(e => e.ExitTime);
+                entity.HasOne(e => e.Person)
+                      .WithMany()
+                      .HasForeignKey(e => e.PersonId)
+                      .OnDelete(DeleteBehavior.Restrict);
+                entity.HasIndex(e => e.PersonId);
+                entity.HasIndex(e => e.EntryTime);
+                entity.HasIndex(e => new { e.PersonId, e.EntryTime });
+                entity.Property<DateTime>("CreatedAt").IsRequired().HasDefaultValueSql("GETUTCDATE()");
+                entity.Property<DateTime>("UpdatedAt").IsRequired().HasDefaultValueSql("GETUTCDATE()");
+            });
         }
 
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
@@ -47,7 +66,7 @@ namespace Data.Persistence
         private void UpdateTimestamps()
         {
             var entries = ChangeTracker.Entries()
-                .Where(e => e.Entity is PersonEntity && (e.State == EntityState.Added || e.State == EntityState.Modified));
+                .Where(e => (e.Entity is PersonEntity || e.Entity is VisitEntity ) && (e.State == EntityState.Added || e.State == EntityState.Modified));
             foreach (var entry in entries)
             {
                 if (entry.State == EntityState.Added)

@@ -39,3 +39,8 @@ Content-Type: application/json
 ###
 GET {{WebApi_HostAddress}}/api/persons/code/1231
 Accept: application/json
+
+
+###
+GET {{WebApi_HostAddress}}/api/visits
+Accept: application/json

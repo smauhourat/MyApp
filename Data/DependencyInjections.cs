@@ -18,7 +18,9 @@ namespace Data
         {
             services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(connectionString));
             services.AddScoped<IRepository<PersonEntity, Guid>, PersonRepository>();
+            services.AddScoped<IRepository<VisitEntity, Guid>, VisitRepository>();
             services.AddScoped<ICodeRepository<PersonEntity>, PersonRepository>();
+            services.AddScoped<IVisitRepository<VisitEntity>, VisitRepository>();
 
             return services;
         }
