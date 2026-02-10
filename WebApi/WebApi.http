@@ -1,0 +1,41 @@
+@WebApi_HostAddress = http://localhost:5110
+
+GET {{WebApi_HostAddress}}/api/persons/00000000-0000-0000-0000-000000000000
+Accept: application/json
+
+###
+POST {{WebApi_HostAddress}}/api/persons
+Content-Type: application/json
+
+{
+    "code": "987",
+    "firstName" : "Eliza",
+    "lastName" : "Dhow",
+    "email" : "elizad@gmail.com",
+    "phoneNumber" : "98754622"
+}
+###
+GET {{WebApi_HostAddress}}/api/persons
+Accept: application/json
+
+###
+PUT {{WebApi_HostAddress}}/api/persons/C56B3A8E-ABFC-4140-8315-4CA4C6A974DA
+Content-Type: application/json
+
+{
+    "id": "C56B3A8E-ABFC-4140-8315-4CA4C6A974DA",
+    "code": "1231",
+    "firstName" : "John",
+    "lastName" : "Doe2222",
+    "email" : "johondoe@gmail.com",
+    "phoneNumber" : "1234567890"
+}
+
+###
+DELETE {{WebApi_HostAddress}}/api/persons/94A2500B-E50B-4544-A467-3192558A7389
+Content-Type: application/json
+
+
+###
+GET {{WebApi_HostAddress}}/api/persons/code/1231
+Accept: application/json
