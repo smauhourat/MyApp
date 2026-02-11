@@ -1,5 +1,6 @@
 @WebApi_HostAddress = http://localhost:5110
 
+###
 GET {{WebApi_HostAddress}}/api/persons/00000000-0000-0000-0000-000000000000
 Accept: application/json
 
@@ -14,6 +15,7 @@ Content-Type: application/json
     "email" : "elizad@gmail.com",
     "phoneNumber" : "98754622"
 }
+
 ###
 GET {{WebApi_HostAddress}}/api/persons
 Accept: application/json
@@ -26,7 +28,7 @@ Content-Type: application/json
     "id": "C56B3A8E-ABFC-4140-8315-4CA4C6A974DA",
     "code": "1231",
     "firstName" : "John",
-    "lastName" : "Doe2222",
+    "lastName" : "Doe222",
     "email" : "johondoe@gmail.com",
     "phoneNumber" : "1234567890"
 }
@@ -35,12 +37,35 @@ Content-Type: application/json
 DELETE {{WebApi_HostAddress}}/api/persons/94A2500B-E50B-4544-A467-3192558A7389
 Content-Type: application/json
 
-
 ###
 GET {{WebApi_HostAddress}}/api/persons/code/1231
 Accept: application/json
 
-
 ###
 GET {{WebApi_HostAddress}}/api/visits
+Accept: application/json
+
+###
+POST {{WebApi_HostAddress}}/api/visits/entry
+Content-Type: application/json
+
+{
+  "personId": "552E9B39-68F1-4B61-94A5-C00D7A23BF7C",
+  "entryTime": null
+}
+
+###
+GET {{WebApi_HostAddress}}/api/visits/active
+Accept: application/json
+
+###
+POST {{WebApi_HostAddress}}/api/visits/exit
+Accept: application/json
+
+{
+    "visitId": "74ba409e-dc9c-420f-a6f2-a72c5d5ca012"
+}
+
+###
+GET {{WebApi_HostAddress}}/api/visits/C56B3A8E-ABFC-4140-8315-4CA4C6A974DA
 Accept: application/json

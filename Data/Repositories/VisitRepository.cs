@@ -73,7 +73,7 @@ namespace Data.Repositories
         {
             return await _context.Visits
                 .Include(v => v.Person)
-                .Where(v => v.Active)
+                .Where(v => v.ExitTime == null)
                 .ToListAsync();
         }
 
@@ -87,7 +87,7 @@ namespace Data.Repositories
 
         public async Task<bool> HasActiveVisitAsync(Guid personId)
         {
-            return await _context.Visits.AnyAsync(v => v.PersonId == personId && v.Active);
+            return await _context.Visits.AnyAsync(v => v.PersonId == personId && v.ExitTime == null);
         }
     }
 }

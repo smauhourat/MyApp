@@ -1,4 +1,5 @@
 using Application.UseCases.Persons;
+using Application.UseCases.Visits;
 using Data;
 using Data.Repositories;
 using Domain;
@@ -19,6 +20,12 @@ builder.Services.AddScoped<GetAllPersonsUseCase>();
 builder.Services.AddScoped<GetPersonByIdUseCase>();
 builder.Services.AddScoped<GetPersonByCodeUseCase>();
 builder.Services.AddScoped<UpdatePersonUseCase>();
+
+builder.Services.AddScoped<RegisterEntryUseCase>();
+builder.Services.AddScoped<RegisterExitUseCase>();
+builder.Services.AddScoped<GetActiveVisitsUseCase>();
+builder.Services.AddScoped<GetAllVisitsUseCase>();
+builder.Services.AddScoped<GetVisitsByPersonUseCase>();
 
 var app = builder.Build();
 
