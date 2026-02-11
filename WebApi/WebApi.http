@@ -50,7 +50,7 @@ POST {{WebApi_HostAddress}}/api/visits/entry
 Content-Type: application/json
 
 {
-  "personId": "552E9B39-68F1-4B61-94A5-C00D7A23BF7C",
+  "personId": "c56b3a8e-abfc-4140-8315-4ca4c6a974da",
   "entryTime": null
 }
 
